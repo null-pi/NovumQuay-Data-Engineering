@@ -1,0 +1,17 @@
+services:
+  core:
+    container_name: novumquay-data-engineering
+    image: novumquay-data-engineering
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: [ "java", "-jar", "/app/app.jar" ]
+    ports:
+      - "8080:8080"
+    networks:
+      - novumquay-network
+
+
+networks:
+  novumquay-network:
+    external: true
