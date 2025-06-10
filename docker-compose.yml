@@ -5,12 +5,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: [ "java", "-jar", "/app/app.jar" ]
     ports:
+      # Exposes the application port
       - "8080:8080"
+      # Exposes the traditional VNC port (for VNC clients)
+      - "5901:5901"
+      # Exposes the noVNC web port (for browser access)
+      - "6901:6901"
     networks:
       - novumquay-network
-
 
 networks:
   novumquay-network:
